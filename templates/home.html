@@ -1,0 +1,12 @@
+{% extends 'index.html'%}
+
+{% block content%}
+<div class="container">
+    <div>This setup allows you to manage polls where each poll can have multiple choices, and users can vote on those choices via the Django admin  as well as interface. Voting functionality is implemented with a view (vote) that handles POST requests to increment vote counts for selected choices.you can create poll using django admin</div>
+
+    <a href="{% url 'poll_question' id=1 %}">Go to first question</a>
+
+    <!-- <a href="{% url 'category' %}">Go to Second task</a> -->
+</div>
+
+{% endblock %}

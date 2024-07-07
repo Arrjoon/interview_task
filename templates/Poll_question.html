@@ -1,0 +1,21 @@
+{% extends 'index.html'%}
+
+{% block content%}
+
+<div class="container">
+    <h1>Fill one of the  the four choice </h1>
+    <h2>{{ poll.question }}</h2>
+
+    <form action="{% url 'vote' poll.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in poll.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+        <input type="submit" value="Vote">
+        <!-- <input type="submit" value="Next"> -->
+        <a href="{% url 'poll_question' poll.id|add:1 %}">Next  question</a>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index.html'%}
+
+{% block content%}
+<div class="container mt-5">
+    <h1>Developing Main Category, Category, and Sub-category App</h1>
+    <div>Here is parent folder is main_category,sub_folder category and the another subfolder sub_category if you have folder in database you can show.</div>
+    <nav>
+        <ul>
+            {% for i in main_category %}
+            <li>
+                <a href="#" id="mainCategory{{ forloop.counter }}">{{ i.name }}</a>
+                <ul>
+                    {% for cat in i.category_set.all %}
+                    <li>
+                        {{ cat.name }}
+                        <ul>
+                            {% for sub_cat in cat.sub_category_set.all %}
+                            <li>{{ sub_cat.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}
